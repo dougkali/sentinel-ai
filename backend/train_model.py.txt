@@ -1,0 +1,19 @@
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+
+# Carregar dados de treinamento
+data = pd.read_csv('data.csv')
+
+# Pré-processamento e divisão de dados
+X = data.drop('label', axis=1)
+y = data['label']
+
+# Treinamento do modelo
+model = RandomForestClassifier()
+model.fit(X, y)
+
+# Salvar modelo treinado
+joblib.dump(model, 'model.joblib')
+
+
